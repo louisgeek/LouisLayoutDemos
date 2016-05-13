@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.louisgeek.louislayoutdemos.NextActivity">
+<TextView
+    android:id="@+id/id_tv_new"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="点我"
+    android:textSize="40dp"
+    android:background="@mipmap/bg"
+    />
+
+    <Button
+        android:id="@+id/id_btn_add_emoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_tv_new"
+        android:text="add emoji"
+        />
+
+    <EditText
+        android:id="@+id/id_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_btn_add_emoji"
+        />
+    <com.louisgeek.louislayoutdemos.EditTextWithDel
+        android:id="@+id/id_etwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_et"
+        android:hint="第一种实现方式"
+        />
+    <Button
+        android:id="@+id/id_btn_huangdong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="huangdong"
+        android:layout_below="@id/id_etwd"
+        />
+    <com.louisgeek.louislayoutdemos.ClearEditText
+        android:id="@+id/id_cet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_btn_huangdong"
+        android:hint="第二种实现方式"
+        />
+
+    <com.louisgeek.louislayoutdemos.MyRoundImageView
+        android:id="@+id/id_mriv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/id_cet"
+        />
+
+    <com.louisgeek.louislayoutdemos.CircleLikeProgressbar
+        android:id="@+id/clp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_mriv"
+        />
+
+    <!-- android:maxHeight="5dp"
+        android:minHeight="5dp"-->
+    <SeekBar
+        android:id="@+id/id_sb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="8dp"
+        android:minHeight="8dp"
+        android:progressDrawable="@drawable/laye_list_progress_drawable"
+        android:thumb="@drawable/seekbar_thumb"/>
+
+    <RatingBar
+        android:id="@+id/id_rb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_sb"
+        android:layout_alignParentRight="true"
+        style="@style/myRatingBarStyte"/>
+</RelativeLayout>

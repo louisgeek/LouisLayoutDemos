@@ -1,0 +1,93 @@
+package com.louisgeek.louislayoutdemos;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+public class NextActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_next);
+        SeekBar idsb = (SeekBar) findViewById(R.id.id_sb);
+        CircleLikeProgressbar clp = (CircleLikeProgressbar) findViewById(R.id.clp);
+        MyRoundImageView idmriv = (MyRoundImageView) findViewById(R.id.id_mriv);
+        Button idbtnhuangdong = (Button) findViewById(R.id.id_btn_huangdong);
+        final ClearEditText idcet = (ClearEditText) findViewById(R.id.id_cet);
+        EditTextWithDel idetwd = (EditTextWithDel) findViewById(R.id.id_etwd);
+        final EditText idet = (EditText) findViewById(R.id.id_et);
+        Button idbtnaddemoji = (Button) findViewById(R.id.id_btn_add_emoji);
+        final TextView idtvnew = (TextView) findViewById(R.id.id_tv_new);
+        idtvnew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                idtvnew.setText("长文本长文本文本长文本长文本文本");
+            }
+        });
+
+
+        idbtnaddemoji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addEmoji(idet);
+            }
+        });
+
+        idbtnhuangdong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //idcet.requestFocus();
+                idcet.setShakeAnimation();
+            }
+        });
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.logo);
+        idmriv.setBitmap(bitmap);
+
+
+        idsb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+               int  secondaryProgress=progress+20;
+                if (secondaryProgress>100){
+                    secondaryProgress=100;
+                }
+                seekBar.setSecondaryProgress(secondaryProgress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+    }
+
+    private void addEmoji(EditText idet) {
+        SpannableString spanStr = new SpannableString("imge");
+        //图片资源
+        Drawable drawable = getResources().getDrawable(R.mipmap.emoji);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        //ImageSpan  用ImageSpan代替文本
+        ImageSpan span = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
+        //setSpan
+        spanStr.setSpan(span,0,4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        int cursor = idet.getSelectionStart();
+        idet.getText().insert(cursor, spanStr);
+    }
+}
