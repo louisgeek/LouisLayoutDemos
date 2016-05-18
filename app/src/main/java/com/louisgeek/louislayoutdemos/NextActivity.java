@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.Button;
@@ -16,10 +18,13 @@ import android.widget.TextView;
 
 public class NextActivity extends AppCompatActivity {
 
+    boolean isPass=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next);
+
+        Button idbtnpassword = (Button) findViewById(R.id.id_btn_password);
         SeekBar idsb = (SeekBar) findViewById(R.id.id_sb);
         CircleLikeProgressbar clp = (CircleLikeProgressbar) findViewById(R.id.clp);
         MyRoundImageView idmriv = (MyRoundImageView) findViewById(R.id.id_mriv);
@@ -59,9 +64,9 @@ public class NextActivity extends AppCompatActivity {
         idsb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-               int  secondaryProgress=progress+20;
-                if (secondaryProgress>100){
-                    secondaryProgress=100;
+                int secondaryProgress = progress + 20;
+                if (secondaryProgress > 100) {
+                    secondaryProgress = 100;
                 }
                 seekBar.setSecondaryProgress(secondaryProgress);
             }
@@ -74,6 +79,21 @@ public class NextActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
+            }
+        });
+
+        idbtnpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPass){
+                    idet.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    idet.setSelection(idet.getText().length());
+                    isPass=false;
+                }else{
+                    idet.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    idet.setSelection(idet.getText().length());
+                    isPass=true;
+                }
             }
         });
     }

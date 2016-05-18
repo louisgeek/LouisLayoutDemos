@@ -13,19 +13,35 @@
     android:background="@mipmap/bg"
     />
 
-    <Button
-        android:id="@+id/id_btn_add_emoji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/id_tv_new"
-        android:text="add emoji"
-        />
+   <LinearLayout
+       android:id="@+id/id_ll"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_below="@id/id_tv_new"
+       >
+
+       <Button
+           android:id="@+id/id_btn_add_emoji"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+
+           android:text="add emoji"
+           />
+       <Button
+           android:id="@+id/id_btn_password"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/id_tv_new"
+           android:text="password"
+           />
+   </LinearLayout>
 
     <EditText
         android:id="@+id/id_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/id_btn_add_emoji"
+        android:layout_below="@id/id_ll"
         />
     <com.louisgeek.louislayoutdemos.EditTextWithDel
         android:id="@+id/id_etwd"
